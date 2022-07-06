@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교보문고</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /******** 사라지는 이미지 *******/
+        #header_img {
+            width: 100%;
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #header_img>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #img_close {
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            margin: 0 0 0 840px;
+        }
+
+        #img_close>a>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /********헤더 네비********/
+        #header_nav {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #header_nav1 {
+            width: 950px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #nav {
+            width: 350px;
+            height: 30px;
+        }
+
+        #nav2 {
+            width: 350px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav_menu1 {
+            float: left;
+        }
+
+        .nav_menu1>a {
+            text-decoration: none;
+            color: #222;
+            font-size: 11px;
+            margin: 8px 30px 0 1px;
+        }
+
+        .nav_menu1>a:hover {
+            text-decoration: underline;
+            color: blue
+        }
+
+        /** 네비 서브1**/
+        .nav_sub {
+            width: 390px;
+            height: auto;
+            background-color: #fff;
+            display: flex;
+            position: absolute;
+            line-height: 23px;
+            margin: 0px 0 0 0px;
+            border: 1px solid #222;
+        }
+
+        span {
+            background-color: rgb(228, 228, 228);
+            display: block;
+            border-right: 1px solid rgba(197, 197, 197, 0.918);
+            font-size: 12px;
+            width: 129px;
+        }
+
+        .nav_sub1>a {
+            font-size: 10px;
+            text-decoration: none;
+            color: #222;
+            display: block;
+        }
+
+        .nav_sub1>a:hover {
+            color: black;
+            background-color: rgb(228, 228, 228);
+        }
+
+        .nav_sub_border {
+            border-right: 1px solid rgba(197, 197, 197, 0.918);
+            height: 95%;
+        }
+
+        .nav_sub2 {
+            width: 90px;
+            height: auto;
+            background-color: #fff;
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            line-height: 23px;
+        }
+
+        #sub_box {
+            width: 390px;
+            height: 410px;
+            position: absolute;
+            z-index: 5;
+            margin: 8px 0 0 0px;
+            display: none;
+        }
+
+        #sub_box2 {
+            width: 90px;
+            height: 140px;
+            position: absolute;
+            z-index: 5;
+            margin: 8px 0 0 0px;
+            display: none;
+        }
+
+        /** 네비 서브2 **/
+        #login {
+            background-color: #fff;
+            border: 1px solid rgb(231, 231, 231);
+            border-radius: 3px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .nav2_sub {
+            display: flex;
+        }
+
+        .nav2_sub>li {
+            display: flex;
+            justify-content: space-around;
+            margin: 5px 0 0 5px;
+        }
+
+        .nav2_sub>li>a {
+            font-size: 11px;
+            text-decoration: none;
+            color: #222;
+            display: flex;
+            flex-flow: row wrap;
+            margin: 0 0 0 10px;
+        }
+
+        .nav2_sub>li>a:hover {
+            text-decoration: underline;
+            color: blue
+        }
+
+        .nav2_sub>li>a>img {
+            width: 20px;
+            height: 20px;
+            margin: -2px 0 0 10px;
+        }
+
+        #login:hover {
+            border: 1px solid #222;
+        }
+
+        /********헤더 메인********/
+        #header_main {
+            width: 100%;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #header_main1 {
+            width: 950px;
+            height: 110px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #logo {
+            width: 180px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+        }
+
+        /** 글자 슬라이더 **/
+        #sch {
+            width: 470px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        #sch1 {
+            width: 400px;
+            height: 20px;
+            margin: 0 0px 0 70px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #sch_menu {
+            width: 350px;
+            height: 20px;
+            margin: 0px 0 0 0px;
+        }
+
+        #sch_menu>.sch_sub {
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+        }
+
+        #sch_menu>.sch_sub:not(:first-child) {
+            display: none;
+        }
+
+        #sch_menu>.sch_sub {
+            width: 350px;
+            height: 20px;
+        }
+
+        .sch_sub1>a {
+            font-size: 10px;
+            text-decoration: none;
+            color: #222;
+        }
+
+        .sch_sub1>a:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+
+        #sch_button {
+            float: right;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            margin: 2px 0 0 0px;
+        }
+
+        .prev1>a {
+            text-decoration: none;
+        }
+
+        .next1>a {
+            text-decoration: none;
+        }
+
+        .prev1 {
+            width: 10px;
+            height: 10px;
+            font-size: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .next1 {
+            width: 10px;
+            height: 10px;
+            font-size: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /** 검색창 **/
+        #sch2 {
+            width: 470px;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #search_box {
+            width: 400px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0 0 0 60px;
+        }
+
+        #search_box>input {
+            width: 400px;
+            height: 70%;
+            font-size: 12px;
+            padding: 5px 15px;
+            background-color: #f8f8f8;
+            border: none;
+            font-weight: bold;
+            color: #666;
+            border-radius: 30px;
+            border: 2px solid darkblue;
+        }
+
+        #search_box>img {
+            width: 8%;
+            height: 70%;
+            cursor: pointer;
+            margin: 6px 0 0 0px;
+        }
+
+        /** 오른쪽 이미지 슬라이더 **/
+        #icon {
+            width: 220px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+        }
+
+        #icon_slide {
+            width: 220px;
+            height: 65px;
+            overflow: hidden;
+        }
+
+        #icon_slide>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #icon_button {
+            float: right;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            margin: 90px 0 0 -20px;
+        }
+
+        .prev2>a {
+            text-decoration: none;
+        }
+
+        .next2>a {
+            text-decoration: none;
+        }
+
+        .prev2 {
+            width: 10px;
+            height: 10px;
+            font-size: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .next2 {
+            width: 10px;
+            height: 10px;
+            font-size: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /********헤더 메뉴********/
+        #header_menu {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            background-color: #5e6b9e;
+        }
+
+        #header_menu1 {
+            width: 950px;
+            height: 60px;
+            display: flex;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #menu_logo {
+            width: 8%;
+            height: 100%;
+            background-color: #4d5780;
+            position: relative;
+        }
+
+        #menu_logo>a>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #menu_imgbox {
+            width: 10%;
+            height: 100%;
+            margin: 0px 0 0 0px;
+        }
+
+        #menu_imgbox>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #menu_imgbox>img:hover {
+            background-color: #586492;
+        }
+
+        #menu_tagbox {
+            width: 85%;
+            height: 100%;
+            line-height: 60px;
+        }
+
+        #menu_tagbox>.menu_main {
+            display: flex;
+            align-items: center;
+        }
+
+        #menu_tag {
+            width: 65%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu_main>li>a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            width: 78px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /** 메뉴 서브 **/
+        .menu_sub {
+            display: none;
+            width: 76px;
+            position: absolute;
+            line-height: 25px;
+            border: 1px solid rgb(204, 204, 204);
+            border-top: none;
+            background-color: #fff;
+        }
+
+        .menu_sub>li>a {
+            font-size: 10px;
+            text-decoration: none;
+            color: #666;
+            display: block;
+        }
+
+        .menu_sub>li>a:hover {
+            background-color: rgb(196, 196, 196);
+        }
+
+        .menu_sub0:hover {
+            background-color: #586492
+        }
+
+        .img_sub {
+            display: none;
+            width: 60px;
+            position: absolute;
+            line-height: 25px;
+            border: 1px solid rgb(204, 204, 204);
+            border-top: none;
+            margin: -4px 0 0 0px;
+            background-color: #fff;
+        }
+
+        .img_sub>li>a {
+            font-size: 10px;
+            text-decoration: none;
+            color: #666;
+            display: block;
+        }
+
+        .img_sub>li>a:hover {
+            background-color: rgb(196, 196, 196);
+        }
+
+        #menu_net {
+            width: 25%;
+            height: 100%;
+        }
+
+        .side_tag {
+            display: flex;
+            justify-content: space-evenly;
+            line-height: 60px;
+        }
+
+        .side_tag>li>a {
+            text-decoration: none;
+            color: rgb(238, 238, 238);
+            font-size: 12px;
+        }
+
+        .side_tag>li>a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .opa {
+            opacity: 0.3;
+        }
+
+        /******슬라이더*****/
+
+        #slider {
+            width: 100%;
+            height: 400px;
+            padding: 25px 0px;
+            background-color: #e4f1d3;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .slidebox {
+            width: 1000px;
+            height: 400px;
+            display: flex;
+            flex-flow: wrap
+        }
+
+        #slide_imgbox0 {
+            width: 70%;
+            height: 330px;
+            background-color: aqua;
+            overflow: hidden;
+        }
+
+        #slide_imgbox {
+            width: 700px;
+            height: 330px;
+            float: left;
+        }
+
+        #slide_imgbox>.slider_1box {
+            width: 100%;
+            height: 100%;
+        }
+
+        #slide_imgbox>.slider_1box>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #slide_imgbox>.slider_3box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #slide_imgbox>.slider_3box>img {
+            width: 33.3333%;
+            height: 100%;
+            border-right: 2px solid #ddd;
+        }
+
+        #slide_imgbox>.slider_3box>img:last-child {
+            border: none;
+        }
+
+        #slide_subbox {
+            width: 70%;
+            height: 50px;
+            margin: 30px 0 0 0px;
+        }
+
+        .slide_tag {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .slide_tag>li>a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px;
+            text-shadow: 4px 4px 4px #666;
+        }
+
+        .slide_tag>li>a:hover {
+            color: #fff;
+            background-color: #586492;
+            box-shadow: 4px 4px 4px #4d5780;
+            border-radius: 5px;
+        }
+
+        #slide_sidebox {
+            width: 25%;
+            height: 380px;
+            background-color: #fff;
+            margin: -330px 0 0 25px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 25px;
+        }
+
+        #slide_sidebox>h2 {
+            font-size: 18px;
+            cursor: pointer;
+            margin: 5px 0 0 0px;
+        }
+
+        #slide_sidebox>h1 {
+            font-size: 12px;
+        }
+
+        #slide_sidebox>h1:hover {
+            text-decoration: underline;
+            color: #000
+        }
+
+        #slide_sidebox>p {
+            font-size: 12px;
+        }
+
+        #slide_sidebox>h5 {
+            font-size: 10px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        #slide_side_imgbox {
+            width: 80%;
+            height: 140px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        #slide_side_imgbox>img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+
+        #slide_side_imgbox>img:hover {
+            transform: scale(1.08);
+        }
+
+        #slide_textbox {
+            width: 80%;
+            height: 130px;
+            border-top: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        #slide_textbox>p>a {
+            text-decoration: none;
+            color: #222;
+            font-size: 12px;
+        }
+
+        #slide_textbox>p>a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        #slide_closebox {
+            width: 120px;
+            height: 185px;
+            background-color: #fff;
+            position: absolute;
+            margin: 0px 0 0 985px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #slide_closebox1 {
+            width: 120px;
+            height: 185px;
+            background-color: #fff;
+            position: absolute;
+            margin: 195px 0 0 985px;
+        }
+
+        #slide_closebox>#img_close1>a>img {
+            width: 15px;
+            height: 15px;
+            float: right;
+        }
+
+        #slide_closebox1>#img_close2>a>img {
+            width: 15px;
+            height: 15px;
+            float: right;
+        }
+
+        #closebox {
+            width: 120px;
+            height: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 20px;
+        }
+
+        #closebox>img {
+            width: 100px;
+            height: 100px;
+            border-radius: 110px;
+        }
+
+        #closebox>h3 {
+            font-size: 13px;
+        }
+
+        #closebox>h5 {
+            font-size: 12px;
+            color: rgb(87, 87, 87);
+        }
+
+        #closebox>p {
+            font-size: 12px;
+        }
+
+        #closebox1 {
+            width: 120px;
+            height: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 17px;
+        }
+
+        #closebox1>img {
+            width: 100px;
+            height: 100px;
+            border-radius: 110px;
+        }
+
+        #closebox1>h3 {
+            font-size: 13px;
+        }
+
+        #closebox1>h1 {
+            font-size: 13px;
+            color: red;
+        }
+
+        #closebox1>h5 {
+            font-size: 12px;
+            color: rgb(87, 87, 87);
+        }
+
+        #closebox1>p {
+            font-size: 12px;
+        }
+
+        /*****메인*****/
+
+        main {
+            width: 100%;
+            height: 2000px;
+            background-color: aqua;
+        }
+
+        #main_head {
+            width: 100%;
+            height: 130px;
+            background-color: #f9f9f9;
+            margin: 0 auto;
+            border-bottom: 1px solid #ccc;
+            display:flex;
+            justify-content: center;
+        }
+
+        #main_head0 {
+            width: 100%;
+            height: 60px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            border-bottom: 1px solid #ccc;
+            display:flex;
+            justify-content: center;
+        }
+
+        /** main_head 박스 **/
+
+        #main_head1 {width:315px; height:130px; border-right: 1px solid #ccc;}
+        #main_head2 {width:315px; height:130px; border-right: 1px solid #ccc;}
+        #main_head3 {width:315px; height:130px; }
+        #main_head4 {width:315px; height:60px; border-right: 1px solid #ccc;}
+        #main_head5 {width:315px; height:60px; border-right: 1px solid #ccc;}
+        #main_head6 {width:315px; height:60px; }
+
+        #main_head1 > a > img {width:100%; height:100%;}
+        #main_head2 > a > img {width:100%; height:100%;}
+        #main_head3 > a > img {width:100%; height:100%;}
+        #main_head4 > a > img {width:100%; height:100%;}
+        #main_head5 > a > img {width:100%; height:100%;}
+        #main_head6 > a > img {width:100%; height:100%;}
+
+        /** today 박스 **/
+
+        #main_today {width:950px; height:390px; background-color: #5e6b9e; margin:0 auto; display:flex; justify-content: space-between; align-items: center;}
+        
+        #main_today1 {width:635px; height:340px; background-color: bisque; display:flex; flex-direction: column; margin:50px 0 0 0px;}
+        #main_today2 {width:300px; height:290px; background-color: bisque; margin:100px 0 0 0px;}
+
+        #main_textbox {width:635px; height:50px; background-color: #a5adca; display:flex; align-items: center;}
+        #main_textbox > h1 {font-size:15px;}
+        .textbox_1 {display:flex; margin:0 0 0 20px;}
+        .textbox_1 > li > a {font-size:13px; text-decoration: none; color:rgb(73, 73, 73); margin:0 0 0 20px;}
+
+        #main_imgbox {width:635px; height:290px; background-color: chartreuse; display:flex;}
+        
+        #main_imgbox1 {width:355px; height:290px; background-color:#fb86ff; position: relative;}
+        #main_imgbox1 > .today_bookbox_img_type1 {width:120px; height:175px; position:absolute; top:20px; left:50%; transform:translateX(-50%); z-index:1;}
+        #main_imgbox1 > .today_bookbox_img_type2 {width:100px; height:145px;position:absolute; top:40px; left:20%; z-index:0; opacity:0.5;}
+        #main_imgbox1 > .today_bookbox_img_type3 {width:90px; height:135px; position:absolute; top:40px; right:20%; z-index:0; opacity:0.5;}
+        #main_imgbox1 > .today_bookbtn {position:absolute; bottom:20%; left:50%; transform:translateX(-50%); }
+        #main_imgbox1 > .today_bookbtn > li {float:left; width:10px; height:10px; border:1px solid #000; border-radius:50%; margin:0 2px; cursor:pointer; background-color:#f8f8f8;}
+        #main_imgbox1 > .today_bookbtn > li:first-of-type {background-color:#000;}
+
+        #main_imgbox2 {width:280px; height:290px; background-color:#ff7575; overflow: hidden;}
+        #main_imgbox2 > img {width:100%; height:100%; }
+        #slider_btn {width:1900px; height:560px; position: relative; }
+
+        #main_imgbox3 {width:635px; height:50px; position: absolute; background-color: #5e6b9e; margin:240px 0 0 0px; opacity: 0.8;}
+        #main_imgbox3_textbox {width:75%; height:50px;   display:flex; align-items: center; justify-content: space-around;}
+        #main_imgbox3_textbox > h1 {font-size:15px; color:#fff; }
+        #main_imgbox3_textbox > h1:hover {text-decoration: underline; color:#fff; opacity: 1;}
+        #main_imgbox3_textbox > p {font-size:13px; }
+
+    </style>
+    <script src="js/close.js"></script>
+    <script src="js/nav_sub1.js"></script>
+    <script src="js/nav_sub2.js"></script>
+    <script src="js/slide.js"></script>
+    <script src="js/slide_close.js"></script>
+    <script src="js/today_leftimg.js"></script>
+
+</head>
+
+<body>
+    <!--header 사라지는 이미지-->
+    <div id="header_img">
+        <img src="img/header_top1.png" alt="헤더상단이미지">
+        <div id="img_close">
+            <a href="#"><img src="img/close" alt="취소버튼"></a>
+        </div>
+    </div>
+
+    <!--header start-->
+    <header>
+
+        <div id="header_nav">
+            <div id="header_nav1">
+                <div id="nav">
+                    <ul class="nav_menu">
+                        <li class="nav_menu1"><a href="#">바로콘</a></li>
+                        <li class="nav_menu1"><a href="#">매장 안내∨</a>
+                            <div id="sub_box">
+                                <ul class="nav_sub">
+                                    <li><span>서울</span>
+                                        <ul class="nav_sub_border">
+                                            <li class="nav_sub1"><a href="#">광화문점</a></li>
+                                            <li class="nav_sub1"><a href="#">가든파이브 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">강남점</a></li>
+                                            <li class="nav_sub1"><a href="#">건대 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">동대문 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">다큐브시티 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">목동점</a></li>
+                                            <li class="nav_sub1"><a href="#">서울대 교내서점</a></li>
+                                            <li class="nav_sub1"><a href="#">수유 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">신논현역스토어</a></li>
+                                            <li class="nav_sub1"><a href="#">영등포점</a></li>
+                                            <li class="nav_sub1"><a href="#">은평 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">이화여대 교내서점</a></li>
+                                            <li class="nav_sub1"><a href="#">잠실점</a></li>
+                                            <li class="nav_sub1"><a href="#">천호점</a></li>
+                                            <li class="nav_sub1"><a href="#">청량리 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">합정점</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><span>경기/인천</span>
+                                        <ul class="nav_sub_border">
+                                            <li class="nav_sub1"><a href="#">광교점</a></li>
+                                            <li class="nav_sub1"><a href="#">광교 월드스퀘어센터</a></li>
+                                            <li class="nav_sub1"><a href="#">부천점</a></li>
+                                            <li class="nav_sub1"><a href="#">분당점</a></li>
+                                            <li class="nav_sub1"><a href="#">송도 바로드림센텉</a></li>
+                                            <li class="nav_sub1"><a href="#">인천점</a></li>
+                                            <li class="nav_sub1"><a href="#">일산점</a></li>
+                                            <li class="nav_sub1"><a href="#">판교점</a></li>
+                                            <li class="nav_sub1"><a href="#">평촌점</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><span>수도권 외</span>
+                                        <ul>
+                                            <li class="nav_sub1"><a href="#">경성대,부경대 센터</a></li>
+                                            <li class="nav_sub1"><a href="#">광주상무 센터</a></li>
+                                            <li class="nav_sub1"><a href="#">대구점</a></li>
+                                            <li class="nav_sub1"><a href="#">대전점</a></li>
+                                            <li class="nav_sub1"><a href="#">부산점</a></li>
+                                            <li class="nav_sub1"><a href="#">세종 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">센텀시티점</a></li>
+                                            <li class="nav_sub1"><a href="#">울산점</a></li>
+                                            <li class="nav_sub1"><a href="#">전북대 교내서점</a></li>
+                                            <li class="nav_sub1"><a href="#">전주 바로드림센터</a></li>
+                                            <li class="nav_sub1"><a href="#">창원점</a></li>
+                                            <li class="nav_sub1"><a href="#">천안점</a></li>
+                                            <li class="nav_sub1"><a href="#">칠곡 센터</a></li>
+                                            <li class="nav_sub1"><a href="#">포항공대 교내서점</a></li>
+                                            <li class="nav_sub1"><a href="#">해운대센터</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav_menu1"><a href="#">회원혜택∨</a>
+                            <div id="sub_box2">
+                                <ul class="nav_sub2">
+                                    <li class="nav_sub1"><a href="#">교보북클럽</a></li>
+                                    <li class="nav_sub1"><a href="#">등급별 회원혜택</a></li>
+                                    <li class="nav_sub1"><a href="#">신규회원 혜택</a></li>
+                                    <li class="nav_sub1"><a href="#">제휴포인트/상품권</a></li>
+                                    <li class="nav_sub1"><a href="#">참좋은교보문고</a></li>
+                                    <li class="nav_sub1"><a href="#">Prestige Lounge</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav_menu1"><a href="#">Prestige Lounge</a></li>
+                    </ul>
+                </div>
+                <div id="nav2">
+                    <button id="login">로그인</button>
+                    <ul class="nav2_sub">
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">출석체크</a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">주문배송</a></li>
+                        <li><a href="#"><img src="img/shopping_cart.png" alt="장바구니"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="header_main">
+            <div id="header_main1">
+                <div id="logo">
+                    <img src="img/logo_kyobo.png" alt="교보문고 로고">
+                </div>
+                <div id="sch">
+                    <div id="sch1">
+                        <div id="sch_menu">
+                            <ul class="sch_sub">
+                                <li class="sch_sub1"><a href="#">300만 베스트셀러 작가</a></li>
+                                <li class="sch_sub1"><a href="#">|</a></li>
+                                <li class="sch_sub1"><a href="#">오은영박사 치유특강</a></li>
+                            </ul>
+                            <ul class="sch_sub">
+                                <li class="sch_sub1"><a href="#">식물의 은밀한 감정</a></li>
+                                <li class="sch_sub1"><a href="#">|</a></li>
+                                <li class="sch_sub1"><a href="#">필사하고 싶은 책</a></li>
+                                <li class="sch_sub1"><a href="#">|</a></li>
+                                <li class="sch_sub1"><a href="#">히든 스토리</a></li>
+                            </ul>
+                            <ul class="sch_sub">
+                                <li class="sch_sub1"><a href="#">교보굿즈 베스트</a></li>
+                                <li class="sch_sub1"><a href="#">|</a></li>
+                                <li class="sch_sub1"><a href="#">똑똑한하루</a></li>
+                                <li class="sch_sub1"><a href="#">|</a></li>
+                                <li class="sch_sub1"><a href="#">외국어 사은품8종</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="sch_button">
+                            <span class="prev1"><a href="#">&lt;</a></span>
+                            <span class="next1"><a href="#">&gt;</a></span>
+                        </div>
+                    </div>
+                    <div id="sch2">
+                        <div id="search_box">
+                            <input id="search_input" type="text" placeholder="조건 없이 건네는 힘센 위로의 말">
+                            <img src="img/button_sch.gif" alt="button">
+                        </div>
+                    </div>
+                </div>
+                <div id="icon">
+                    <div id="icon_slide">
+                        <ul class="icon_slide_box">
+                            <li class="icon_slide_img"><a href="#"><img src="img/header_slide_img1.jpg"
+                                        alt="작은 이미지 슬라이더"></a></li>
+                            <li class="icon_slide_img"><a href="#"><img src="img/header_slide_img2.jpg"
+                                        alt="작은 이미지 슬라이더"></a></li>
+                            <li class="icon_slide_img"><a href="#"><img src="img/header_slide_img3.jpg"
+                                        alt="작은 이미지 슬라이더"></a></li>
+                            <li class="icon_slide_img"><a href="#"><img src="img/header_slide_img4.jpg"
+                                        alt="작은 이미지 슬라이더"></a></li>
+                            <li class="icon_slide_img"><a href="#"><img src="img/header_slide_img5.jpg"
+                                        alt="작은 이미지 슬라이더"></a></li>
+                        </ul>
+                    </div>
+                    <div id="icon_button">
+                        <div class="prev2"><a href="#">&lt;</a></div>
+                        <div class="next2"><a href="#">&gt;</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="header_menu">
+            <div id="header_menu1">
+                <div id="menu_logo">
+                    <a href="#"><img src="img/menu.png" alt="햄버거"></a>
+                </div>
+
+                <div id="menu_tag">
+                    <div id="menu_tagbox">
+                        <ul class="menu_main">
+                            <li><a href="#"><b>국내도서</b></a></li>
+                            <li><a href="#"><b>외국도서</b></a></li>
+                            <li class="menu_sub0"><a href="#">eBook∨</a>
+                                <ul class="menu_sub">
+                                    <li><a href="#">일반도서</a></li>
+                                    <li><a href="#">로맨스/BL</a></li>
+                                    <li><a href="#">판타지/무협</a></li>
+                                    <li><a href="#">sam</a></li>
+                                    <li><a href="#">코믹스</a></li>
+                                    <li><a href="#">오디오북</a></li>
+                                    <li><a href="#">학술논문</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">웹소설</a></li>
+                            <li class="menu_sub0"><a href="#"><b>기프트∨</b></a>
+                                <ul class="menu_sub">
+                                    <li><a href="#">디자인문구</a></li>
+                                    <li><a href="#">디지털</a></li>
+                                    <li><a href="#">키친/푸드</a></li>
+                                    <li><a href="#">오피스</a></li>
+                                    <li><a href="#">필기구</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu_sub0"><a href="#"><b>음반∨</b></a>
+                                <ul class="menu_sub">
+                                    <li><a href="#">음반</a></li>
+                                    <li><a href="#">DVD</a></li>
+                                    <li><a href="#">블루레이</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><b>중고장터</b></a></li>
+                        </ul>
+                    </div>
+                    <div id="menu_imgbox">
+                        <img src="img/more.png" alt="더보기">
+                        <ul class="img_sub">
+                            <li><a href="#">북캐스트</a></li>
+                            <li><a href="#">북뉴스</a></li>
+                            <li><a href="#">북로그</a></li>
+                            <li><a href="#">문화행사</a></li>
+                            <li><a href="#">스토리</a></li>
+                            <li><a href="#">개인출판</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="menu_net">
+                    <ul class="side_tag">
+                        <li><a href="#">베스트</a></li>
+                        <li class="opa">|</li>
+                        <li><a href="#">신상품</a></li>
+                        <li class="opa">|</li>
+                        <li><a href="#">이벤트</a></li>
+                        <li class="opa">|</li>
+                        <li><a href="#">사은품</a></li>
+                        <li class="opa">|</li>
+                        <li><a href="#">Picks</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="js/sch.js"></script>
+        <script src="js/icon_slide.js"></script>
+        <script src="js/menu_sub.js"></script>
+        <script src="js/menu_sub2.js"></script>
+    </header>
+
+    <!-- slider start -->
+    <div id="slider">
+        <div class="slidebox">
+            <div id="slide_imgbox0">
+                <div id="slide_imgbox">
+                    <div class="slider_1box">
+                        <img src="img/slider1.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_1box">
+                        <img src="img/slider2.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_1box">
+                        <img src="img/slider3.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_3box">
+                        <img src="img/slider4_1.jpg" alt="slideImage">
+                        <img src="img/slider4_2.jpg" alt="slideImage">
+                        <img src="img/slider4_3.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_1box">
+                        <img src="img/slider5.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_3box">
+                        <img src="img/slider6_1.jpg" alt="slideImage">
+                        <img src="img/slider6_2.jpg" alt="slideImage">
+                        <img src="img/slider6_3.jpg" alt="slideImage">
+                    </div>
+                    <div class="slider_1box">
+                        <img src="img/slider7.jpg" alt="slideImage">
+                    </div>
+                </div>
+            </div>
+            <div id="slide_subbox">
+                <ul class="slide_tag">
+                    <li><a href="#">요즘 이 책</a></li>
+                    <li><a href="#">핫이슈</a></li>
+                    <li><a href="#">새로나온책</a></li>
+                    <li><a href="#">기획/테마</a></li>
+                    <li><a href="#">eBook</a></li>
+                    <li><a href="#">sam</a></li>
+                    <li><a href="#">한정특가</a></li>
+                </ul>
+            </div>
+
+            <div id="slide_sidebox">
+                <h2><b>출판사 북캐스트</b></h2>
+                <h5>거의 모든,책 이야기</h5>
+                <div id="slide_side_imgbox">
+                    <img src="img/slide_sub.jpg" alt="슬라이드 서브 이미지">
+                </div>
+                <h1><b>이름 직업 학력, 다 거짓이었다</b></h1>
+                <p>수지 주연 <안나> 원작소설</p>
+                <div id="slide_textbox">
+                    <p><a href="#">· <달 샤베트> 수상을 축하합니다</a></p>
+                    <p><a href="#">· 이그노벨상 찐광기 레전드</a></p>
+                    <p><a href="#">· '좋은 삶'이란 무엇일까?</a></p>
+                    <p><a href="#">· 대국민 살인범 찾기 서바이벌</a></p>
+                </div>
+            </div>
+            <div id="slide_closebox">
+                <div id="img_close1">
+                    <a href="#"><img src="img/close" alt="취소버튼"></a>
+                </div>
+                <div id="closebox">
+                    <h3><b>북뉴스</b></h3>
+                    <img src="img/close_img1.png" alt="사이드 이미지">
+                    <h5>최예선</h5>
+                    <p>『모던의 시대 우리집』</p>
+                </div>
+            </div>
+            <div id="slide_closebox1">
+                <div id="img_close2">
+                    <a href="#"><img src="img/close" alt="취소버튼"></a>
+                </div>
+                <div id="closebox1">
+                    <h3><b>최저가 DEAL</b></h3>
+                    <h1><b>~11%</b></h1>
+                    <img src="img/bnO_e2_01.jpg" alt="사이드 이미지">
+                    <h5>로지텍 K380 키보드</h5>
+                    <p>31,000원 최저가 무배!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 시작 -->
+
+    <main>
+        <!-- 메인 헤더 -->
+        <div id="main_head">
+            <div id="main_head1">
+                <a href="#"><img src="img/kyobo_head.jpg" alt="메인 헤드"></a>
+            </div>
+            <div id="main_head2">
+                <a href="#"><img src="img/kyobo_head2.jpg" alt="메인 헤드"></a>
+            </div>
+            <div id="main_head3">
+                <a href="#"><img src="img/kyobo_head3" alt="메인 헤드"></a>
+            </div>  
+        </div>
+        <div id="main_head0">
+            <div id="main_head4">
+                <a href="#"><img src="img/kyobo_head4.jpg" alt="메인 헤드"></a>
+            </div>
+            <div id="main_head5">
+                <a href="#"><img src="img/kyobo_head5.jpg" alt="메인 헤드"></a>
+            </div>
+            <div id="main_head6">
+                <a href="#"><img src="img/kyobo_head6.jpg" alt="메인 헤드"></a>
+            </div>  
+        </div>
+
+    <!-- 메인 1번 -->   
+        <div id="main_today">
+            <div id="main_today1">
+                <div id="main_textbox">
+                    <h1><b>오늘의 책</b></h1>
+                    <ul class="textbox_1">
+                        <li><a href="#">국내도서</a></li>
+                        <li><a href="#">eBook</a></li>
+                        <li><a href="#">sam</a></li>
+                    </ul>
+                </div>
+                <div id="main_imgbox">
+                    <div id="main_imgbox1">
+                        <img src="img/today_book1-1.jpg" class="today_bookbox_img_type1" alt="book">
+                                    <img src="img/today_book1-2.jpg" class="today_bookbox_img_type2" alt="book">
+                                    <img src="img/today_book1-3.jpg" class="today_bookbox_img_type3" alt="book">
+                                    <ul class="today_bookbtn">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                    </div>
+                    <div id="main_imgbox2">
+                        <img src="img/today_book_right1-1.jpg" alt="book 설명">
+                        <img src="img/today_book_right1-2.jpg" alt="book 설명">
+                        <img src="img/today_book_right1-3.jpg" alt="book 설명">
+                        <img src="img/today_book_right1-4.jpg" alt="book 설명">
+                    </div>
+                    <div id="main_imgbox3">
+                        <div id="main_imgbox3_textbox">
+                        <h1>박문호 박사의 박히스토리 공부(양장본 H</h1>
+                        <p>박문호</p>
+                        <p>|</p>
+                        <p>김영사</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="main_today2"></div>
+        </div>
+    
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
